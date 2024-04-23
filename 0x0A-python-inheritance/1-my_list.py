@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" Module is documented"""
+
 
 class MyList(list):
     """This class MyList"""
