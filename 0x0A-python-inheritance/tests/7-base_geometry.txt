@@ -1,0 +1,26 @@
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> rects = BaseGeometry()
+>>> isinstance(rects, BaseGeometry)
+True
+>>> rects.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+>>> rects.integer_validator("name", "John")
+Traceback (most recent call last):
+[TypeError] name must be an integer
+>>> rects.integer_validator("name", [])
+Traceback (most recent call last):
+[TypeError] name must be an integer
+>>> rects.integer_validator("name", 'a')
+Traceback (most recent call last):
+[TypeError] name must be an integer
+>>> rects.integer_validator("name", {})
+Traceback (most recent call last):
+[TypeError] name must be an integer
+>>> rects.integer_validator("name", 1)
+>>> rects.integer_validator("age", 0)
+Traceback (most recent call last):
+[ValueError] age must be greater than 0
+>>> rects.integer_validator("age", -1)
+Traceback (most recent call last):
+[ValueError] age must be greater than 0
