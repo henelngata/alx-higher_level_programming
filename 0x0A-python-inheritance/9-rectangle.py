@@ -14,14 +14,10 @@ class Rectangle (BaseGeometry):
             width: int the width
             height: int the height
         """
-        try:
-            super().integer_validator("width", width)
-            super().integer_validator("height", height)
-        except Exception as e:
-            print("[{}] {}".format(e.__class__.__name__, e))
-        else:
-            self.__width = width
-            self.__height = height
+        super().integer_validator("width", width)
+        super().integer_validator("height", height)
+        self.__width = width
+        self.__height = height
 
     def area(self):
         """Calculates the area"""
