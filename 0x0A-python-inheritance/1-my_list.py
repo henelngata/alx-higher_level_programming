@@ -13,3 +13,9 @@ class MyList(list):
         my_list = list(self)
         my_list.sort()
         print("{}".format(my_list))
+
+    def __str__(self):
+        """Return:
+                A class string rep
+        """
+        return "Class MyList"

@@ -11,3 +11,11 @@
 >>> my_list = MyList()
 >>> isinstance(my_list, MyList)
 True
+>>> print(str(my_list))
+Class MyList
+>>> my_list = MyList([1,3,4])
+>>> my_list.append(5)
+>>> sorted_list = my_list.print_sorted()
+[1, 3, 4, 5]
+>>> sorted_list is my_list
+False
