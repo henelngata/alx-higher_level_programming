@@ -5,3 +5,9 @@
 >>> my_list = MyList(['b', 'c', 'd'])
 >>> my_list.print_sorted()
 ['b', 'c', 'd']
+>>> my_list = MyList([])
+>>> my_list.print_sorted()
+[]
+>>> my_list = MyList()
+>>> isinstance(my_list, MyList)
+True
