@@ -1,22 +1,17 @@
 #!/usr/bin/python3
-
-"""Write a script that adds all arguments
-to a Python list, and then save them to a file:
 """
+this module  Load, add, save
+"""
+from sys import argv
+load_from = __import__('6-load_from_json_file').load_from_json_file
+save = __import__('5-save_to_json_file').save_to_json_file
+i = 1
+file = "add_item.json"
 
-import sys
-save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
-load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
-
-
-filename = "add_item.json"
-new_list = []
 try:
-    new_list = load_from_json_file(filename)
+    f = load_from(file)
 except Exception:
-    save_to_json_file([], filename)
-    print([])
-else:
-    sys.argv = sys.argv[1:]
-    new_list.extend(sys.argv)
-    save_to_json_file(new_list, filename)
+    f = []
+
+f.extend(argv[1:])
+save(f, file)
