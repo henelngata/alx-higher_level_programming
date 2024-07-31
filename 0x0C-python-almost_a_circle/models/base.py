@@ -29,15 +29,14 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """writes the JSON string representation of list_objs to a file"""
+        """Writes the JSON string representation of list_objs to a file."""
+        filename = f"{cls.__name__}.json"
+        list_dicts = ([obj.to_dictionary() for obj in list_objs]
+                      if list_objs else [])
+        json_string = cls.to_json_string(list_dicts)
+
         try:
-            with open("{}.json".format(cls.__name__), 'a+') as file:
-                k = 0
-                lists = []
-                while (k < len(list_objs)):
-                    obj = list_objs[k]
-                    lists.append(obj.to_dictionary())
-                    k += 1
-                json.dump(cls.to_json_string(lists), fp=file)
-        except Exception as e:
-            print("Yo have an error:{}".format(e))
+            with open(filename, 'w') as file:
+                file.write(json_string)
+        except IOError as e:
+            print(f"Error: {e}")
