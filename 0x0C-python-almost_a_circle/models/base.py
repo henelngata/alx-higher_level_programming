@@ -52,10 +52,24 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """ Returns an instance with all attributes already set """
-        if cls.__name__ is "Rectangle":
+        if cls.__name__ == "Rectangle":
             obj = cls(1, 1)
             obj.update(**dictionary)
-        elif cls.__name__ is "Square":
+        elif cls.__name__ == "Square":
             obj = cls(1)
             obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def load_from_file(cls):
+        """ returns a list of instances"""
+        filename = f"{cls.__name__}.json"
+        objects = []
+        try:
+            with open(filename, 'r') as f:
+                objects = cls.from_json_string(f.read())
+            for i in range(len(objects)):
+                objects[i] = cls.create(**objects[i])
+        except BaseException:
+            pass
+        return objects
