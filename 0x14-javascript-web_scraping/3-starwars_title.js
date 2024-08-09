@@ -1,6 +1,9 @@
-const req = require('request');
-const uri = `https://swapi-api.alx-tools.com/api/films/:${process.argv[2]}`;
-req.get(uri, function (err, data) {
+#!/usr/bin/node
+const request = require('request');
+const urlpath = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}`;
+request.get(urlpath, 'utf-8', function (err, data) {
   if (err) throw err;
-  console.log(`code: ${data.statusCode}`);
+  data = JSON.parse(data.body);
+  const title = data.title;
+  console.log(title);
 });
